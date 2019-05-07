@@ -3791,3 +3791,112 @@ Completed 200 OK in 47ms (Views: 6.0ms | ActiveRecord: 0.5ms)
   ↳ bin/rails:9
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+Started GET "/" for 127.0.0.1 at 2019-05-07 10:36:00 -0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/thiago/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/thiago/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/thiago/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb (5.0ms)
+Completed 200 OK in 73ms (Views: 13.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2019-05-07 10:36:00 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.3) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/restaurants" for 127.0.0.1 at 2019-05-07 10:36:05 -0300
+Processing by RestaurantsController#index as HTML
+Creating scope :open. Overwriting existing method Restaurant.open.
+  [1m[36mRestaurant Load (0.5ms)[0m  [1m[34mSELECT restaurants.*, (69.09332411348201 * ABS(restaurants.latitude - -23.5506507) * 0.7071067811865475) + (59.836573914187355 * ABS(restaurants.longitude - -46.6333824) * 0.7071067811865475) AS distance, CASE WHEN (restaurants.latitude >= -23.5506507 AND restaurants.longitude >= -46.6333824) THEN  45.0 WHEN (restaurants.latitude <  -23.5506507 AND restaurants.longitude >= -46.6333824) THEN 135.0 WHEN (restaurants.latitude <  -23.5506507 AND restaurants.longitude <  -46.6333824) THEN 225.0 WHEN (restaurants.latitude >= -23.5506507 AND restaurants.longitude <  -46.6333824) THEN 315.0 END AS bearing FROM "restaurants" WHERE (restaurants.latitude BETWEEN -23.840114266221693 AND -23.261187133778304 AND restaurants.longitude BETWEEN -46.94914686874913 AND -46.31761793125087) ORDER BY distance ASC[0m
+  ↳ app/controllers/restaurants_controller.rb:7
+[active_model_serializers]   [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("reviews"."value") FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:15
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Restaurant"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:11
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:11
+[active_model_serializers]   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:19
+[active_model_serializers]   [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("reviews"."value") FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 2]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:15
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Restaurant"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:11
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:11
+[active_model_serializers]   [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:19
+[active_model_serializers]   [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("reviews"."value") FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 6]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:15
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 6], ["record_type", "Restaurant"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:11
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:11
+[active_model_serializers]   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:19
+[active_model_serializers]   [1m[35m (0.0ms)[0m  [1m[34mSELECT AVG("reviews"."value") FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 7]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:15
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 7], ["record_type", "Restaurant"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:11
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:11
+[active_model_serializers]   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:19
+[active_model_serializers]   [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("reviews"."value") FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 3]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:15
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Restaurant"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:11
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:11
+[active_model_serializers]   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:19
+[active_model_serializers]   [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("reviews"."value") FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 8]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:15
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 8], ["record_type", "Restaurant"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:11
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:11
+[active_model_serializers]   [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:19
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (79.89ms)
+Completed 200 OK in 2846ms (Views: 190.3ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/restaurants/search/?q=Bravo" for 127.0.0.1 at 2019-05-07 10:36:16 -0300
+Processing by RestaurantsController#search as HTML
+  Parameters: {"q"=>"Bravo"}
+DEPRECATION WARNING: #search is deprecated and will be removed in 2.3, please use #ransack instead (called from search at /home/thiago/code/thiagohenriquesantos/onebitfood-api/app/controllers/restaurants_controller.rb:15)
+  [1m[36mRestaurant Load (0.4ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE ("restaurants"."name" LIKE '%Bravo%' OR "restaurants"."description" LIKE '%Bravo%')[0m
+  ↳ app/controllers/restaurants_controller.rb:19
+[active_model_serializers]   [1m[35m (0.1ms)[0m  [1m[34mSELECT AVG("reviews"."value") FROM "reviews" WHERE "reviews"."restaurant_id" = ?[0m  [["restaurant_id", 3]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:15
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Restaurant"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:11
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:11
+[active_model_serializers]   [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/restaurant_serializer.rb:19
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (6.6ms)
+Completed 200 OK in 11ms (Views: 8.6ms | ActiveRecord: 0.7ms)
+
+
